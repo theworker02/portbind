@@ -3,29 +3,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>portbind 1.00</title>
+  <title>portbind  · 1.00</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="wrap brand">
-      <img src="logo.svg" alt="portbind mark">
-      <div>
-        <h1>portbind</h1>
-        <p class="tag">Bind-all and PORT scanner · version 1.00</p>
+  <nav class="nav sans">
+    <a class="brand-lockup" href="index.html"><img src="logo.svg" alt=""> portbind</a>
+    <div class="links">
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#install">Install</a>
+      <a href="usage.html">Usage</a>
+      <a href="index.html#examples">Examples</a>
+    </div>
+  </nav>
+  
+  <header class="hero">
+    <img src="logo.svg" alt="portbind mark">
+    <div>
+      <p class="kicker sans">theworker02 · version 1.00</p>
+      <h1>portbind</h1>
+      <p class="lede">Scan files for 0.0.0.0 and PORT or $PORT. Exit 0 only when both patterns exist.</p>
+      <div class="badges sans">
+        <span class="badge">1.00 / 1.0.0</span>
+        <span class="badge">branch main</span>
+        <span class="badge">MIT</span>
+        <span class="badge">Node.js >= 18</span>
       </div>
     </div>
   </header>
-  <main class="wrap">
-    <section class="card">
-      <h2>Purpose</h2>
-      <p>Scan files for 0.0.0.0 and PORT or $PORT. Exit 0 only when both patterns are present.</p>
-      <h2>Install</h2>
-      <pre><code>npm install -g portbind</code></pre>
-      <h2>Usage</h2>
-      <pre><code>portbind [files-or-dirs]</code></pre>
+  <div class="wrap">
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>PaaS hosts like Render require listening on 0.0.0.0 and the provided PORT. portbind is a cheap static check you can run in CI so a merge cannot ship a localhost-only server.</p>
+      <p>Service authors targeting cloud hosts with ephemeral ports, and reviewers of Dockerfiles or Node servers.</p>
     </section>
-    <footer>MIT © 2026 theworker02 · version 1.00 (1.0.0) · navy #0B1F33 · gold #C9A227</footer>
-  </main>
+    <section id="install">
+      <h2>Install</h2>
+      <p>Install globally from Git, or run with Node from a clone. There are no extra dependencies.</p>
+      <pre><code>npm install -g git+https://github.com/theworker02/portbind.git
+portbind --help
+node src/cli.js --help</code></pre>
+    </section>
+    <section id="usage">
+      <h2>Usage</h2>
+      <p>Synopsis: <code>portbind [options] [files-or-dirs...]</code></p>
+      <p>See the <a href="usage.html">full CLI reference</a> for every flag, exit code, and example.</p>
+      <pre><code>portbind 1.00 (1.0.0)
+
+Usage:
+  portbind [options] [files-or-dirs...]
+
+Scan UTF-8 files for:
+  * 0.0.0.0          bind-all address
+  * $PORT or PORT    port from the environment
+
+Exit 0 only when BOTH are present (they may be in different files).
+
+Options:
+  -h, --help       Show this help
+  -v, --version    Print 1.0.0
+
+Examples:
+  portbind
+  portbind src/server.js
+  portbind ./src ./bin</code></pre>
+    </section>
+    <section id="examples">
+      <h2>Examples</h2>
+      <div class="grid-2">
+        <div>
+          <h3 class="ok">Success</h3>
+          <p>Two files together satisfy the rule.</p><pre><code>portbind ./app</code></pre><pre><code>{"ok":true,"hasBindAll":true,"hasPort":true}</code></pre>
+        </div>
+        <div>
+          <h3 class="fail">Failure</h3>
+          <p>Only PORT is present.</p><pre><code>portbind ./broken</code></pre><pre><code>{"ok":false,"hasBindAll":false,"hasPort":true}</code></pre><p>Exit code is 1.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer class="sans">
+    MIT © 2026 theworker02 · version <strong>1.00</strong> (<code>1.0.0</code>) ·
+    navy <code>#0B1F33</code> · gold <code>#C9A227</code> ·
+    <a href="https://github.com/theworker02/portbind">GitHub</a> ·
+    <a href="https://thanks.dev/u/gh/theworker02">thanks.dev</a>
+  </footer>
 </body>
 </html>

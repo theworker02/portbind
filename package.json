@@ -1,7 +1,7 @@
 {
   "name": "portbind",
   "version": "1.0.0",
-  "description": "Scan files for 0.0.0.0 and PORT/$PORT bind patterns.",
+  "description": "Scan files for 0.0.0.0 and PORT or $PORT. Exit 0 only when both patterns exist.",
   "bin": {
     "portbind": "./src/cli.js"
   },
@@ -12,5 +12,26 @@
   "license": "MIT",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theworker02/portbind.git"
+  },
+  "homepage": "https://theworker02.github.io/portbind/",
+  "bugs": {
+    "url": "https://github.com/theworker02/portbind/issues"
+  },
+  "files": [
+    "src",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "port",
+    "bind",
+    "render",
+    "0.0.0.0",
+    "cli"
+  ]
 }
