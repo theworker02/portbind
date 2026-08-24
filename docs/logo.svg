@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Tool mark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="portbind mark">
   <rect width="128" height="128" rx="18" fill="#0B1F33"/>
-  <polygon points="64,20 108,98 20,98" fill="none" stroke="#C9A227" stroke-width="6" stroke-linejoin="round"/>
-  <circle cx="64" cy="68" r="16" fill="#C9A227"/>
-  <rect x="58" y="36" width="12" height="22" rx="2" fill="#0B1F33"/>
+  <circle cx="64" cy="64" r="34" fill="none" stroke="#C9A227" stroke-width="5"/>
+  <circle cx="64" cy="64" r="18" fill="none" stroke="#C9A227" stroke-width="5"/>
+  <circle cx="64" cy="64" r="6" fill="#C9A227"/>
+  <path d="M64 18v12M64 98v12M18 64h12M98 64h12" stroke="#C9A227" stroke-width="5" stroke-linecap="round"/>
 </svg>
