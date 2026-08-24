@@ -30,27 +30,61 @@
   <div class="wrap">
     <section>
       <h2>Synopsis</h2>
-      <pre><code>portbind [options] [files-or-dirs...]</code></pre>
-      <div class="callout sans"><strong>Tip:</strong> <code>portbind --help</code> prints this text in the terminal. <code>portbind --version</code> prints <code>1.0.0</code>.</div>
+      <pre><code>portbind 1.00 (1.0.0)
+
+Usage:
+  portbind [options] [files-or-globs...]
+
+Scan UTF-8 files for bind-all and PORT patterns:
+  * 0.0.0.0          bind-all address
+  * $PORT or PORT    port from the environment
+
+Exit 0 only when every required pattern is present (they may be in
+different files). Default requirement is BOTH host and port.
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             Structured result including matching files
+  --list             List files that contain host and/or port patterns
+  --require-host     Require 0.0.0.0 (default: on unless only --require-port)
+  --require-port     Require PORT/$PORT (default: on unless only --require-host)
+
+Arguments:
+  files-or-globs     Files, directories, or globs such as src/**/*.js
+                     Default: current directory (skips node_modules, .git)
+
+Exit codes:
+  0  required patterns found
+  1  missing pattern, missing path, or unknown option
+
+Examples:
+  portbind
+  portbind src/server.js
+  portbind --list "src/**/*.js"
+  portbind --require-host --json ./src</code></pre>
+      <div class="callout sans"><strong>Tip:</strong> <code>portbind --help</code> and <code>-h</code> print this text. <code>portbind --version</code> and <code>-V</code> print <code>1.0.0</code>.</div>
     </section>
     <section>
       <h2>Flags and arguments</h2>
-      <table class="sans"><thead><tr><th>Flag / argument</th><th>Meaning</th></tr></thead><tbody><tr><td><code>-h, --help</code></td><td>Print detailed usage and exit 0.</td></tr><tr><td><code>-v, --version</code></td><td>Print 1.0.0 and exit 0.</td></tr><tr><td><code>[files-or-dirs...]</code></td><td>Targets to scan. Default: current directory. Skips node_modules, .git, dist, coverage.</td></tr></tbody></table>
+      <p>The complete flag list is in <code>portbind --help</code> (shown above). Human output is the default; pass <code>--json</code> where supported.</p>
     </section>
     <section>
       <h2>Exit codes</h2>
-      <table class="sans"><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Both bind-all and PORT were found.</td></tr><tr><td><code>1</code></td><td>One or both patterns missing.</td></tr></tbody></table>
+      <table class="sans"><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Required patterns found.</td></tr><tr><td><code>1</code></td><td>Missing pattern, missing path, or unknown option.</td></tr></tbody></table>
     </section>
     <section>
       <h2>Configuration</h2>
-      <p>No configuration. A match for 0.0.0.0 anywhere plus a match for $PORT or the word PORT (word boundary) anywhere — they may live in different files.</p>
+      <p>No configuration file. Default requirement is both host and port. `--require-host` or `--require-port` alone narrows the check.</p>
     </section>
     <section id="examples">
       <h2>Worked examples</h2>
       <h3 class="ok">Success path</h3>
-      <p>Two files together satisfy the rule.</p><pre><code>portbind ./app</code></pre><pre><code>{"ok":true,"hasBindAll":true,"hasPort":true}</code></pre>
+      <p>Both 0.0.0.0 and PORT appear in the tree.</p><pre><code>portbind ./src</code></pre><pre><code>portbind: OK
+  0.0.0.0   found
+  PORT      found</code></pre>
       <h3 class="fail">Failure path</h3>
-      <p>Only PORT is present.</p><pre><code>portbind ./broken</code></pre><pre><code>{"ok":false,"hasBindAll":false,"hasPort":true}</code></pre><p>Exit code is 1.</p>
+      <p>A missing path exits 1.</p><pre><code>portbind no-such-path</code></pre><pre><code>path not found: no-such-path</code></pre><p>Exit code is 1.</p>
     </section>
   </div>
   <footer class="sans">

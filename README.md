@@ -57,23 +57,49 @@ echo exit:$?
 
 ## CLI reference
 
-Synopsis:
-
 ```text
-portbind [options] [files-or-dirs...]
-```
+portbind 1.00 (1.0.0)
 
-| Flag / argument | Meaning |
-| --- | --- |
-| `-h, --help` | Print detailed usage and exit 0. |
-| `-v, --version` | Print 1.0.0 and exit 0. |
-| `[files-or-dirs...]` | Targets to scan. Default: current directory. Skips node_modules, .git, dist, coverage. |
+Usage:
+  portbind [options] [files-or-globs...]
+
+Scan UTF-8 files for bind-all and PORT patterns:
+  * 0.0.0.0          bind-all address
+  * $PORT or PORT    port from the environment
+
+Exit 0 only when every required pattern is present (they may be in
+different files). Default requirement is BOTH host and port.
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             Structured result including matching files
+  --list             List files that contain host and/or port patterns
+  --require-host     Require 0.0.0.0 (default: on unless only --require-port)
+  --require-port     Require PORT/$PORT (default: on unless only --require-host)
+
+Arguments:
+  files-or-globs     Files, directories, or globs such as src/**/*.js
+                     Default: current directory (skips node_modules, .git)
+
+Exit codes:
+  0  required patterns found
+  1  missing pattern, missing path, or unknown option
+
+Examples:
+  portbind
+  portbind src/server.js
+  portbind --list "src/**/*.js"
+  portbind --require-host --json ./src
+```
 
 Print the same text locally:
 
 ```bash
 portbind --help
+portbind -h
 portbind --version
+portbind -V
 ```
 
 Expected version output:
@@ -84,39 +110,41 @@ Expected version output:
 
 ## Configuration
 
-No configuration. A match for 0.0.0.0 anywhere plus a match for $PORT or the word PORT (word boundary) anywhere — they may live in different files.
+No configuration file. Default requirement is both host and port. `--require-host` or `--require-port` alone narrows the check.
 
 ## Exit codes
 
 | Code | Meaning |
 | --- | --- |
-| `0` | Both bind-all and PORT were found. |
-| `1` | One or both patterns missing. |
+| `0` | Required patterns found. |
+| `1` | Missing pattern, missing path, or unknown option. |
 
 ## Examples
 
 ### Success path
 
-Two files together satisfy the rule.
+Both 0.0.0.0 and PORT appear in the tree.
 
 ```bash
-portbind ./app
+portbind ./src
 ```
 
-```json
-{"ok":true,"hasBindAll":true,"hasPort":true}
+```text
+portbind: OK
+  0.0.0.0   found
+  PORT      found
 ```
 
 ### Failure path
 
-Only PORT is present.
+A missing path exits 1.
 
 ```bash
-portbind ./broken
+portbind no-such-path
 ```
 
-```json
-{"ok":false,"hasBindAll":false,"hasPort":true}
+```text
+path not found: no-such-path
 ```
 
 Exit code is 1.
