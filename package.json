@@ -1,6 +1,6 @@
 {
   "name": "portbind",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Scan files for 0.0.0.0 and PORT/$PORT bind patterns.",
   "bin": {
     "portbind": "./src/cli.js"

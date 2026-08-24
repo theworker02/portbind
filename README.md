@@ -2,7 +2,12 @@
 
 <img src="docs/logo.svg" alt="portbind mark" width="72" height="72">
 
+![version 1.00](https://img.shields.io/badge/version-1.00-C9A227?labelColor=0B1F33)
+![npm 1.0.0](https://img.shields.io/badge/npm-1.0.0-0B1F33)
+
 Scan files for 0.0.0.0 and PORT or $PORT. Exit 0 only when both patterns are present.
+
+Package version: **1.00** (`1.0.0`).
 
 ## Install
 
