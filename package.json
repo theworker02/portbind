@@ -1,40 +1,16 @@
 {
-  "name": "@magnexis/portbind",
-  "version": "1.0.0",
-  "description": "Scan files for 0.0.0.0 and PORT or $PORT. Exit 0 only when both patterns exist.",
-  "bin": {
-    "portbind": "src/cli.js"
-  },
+  "name": "@theworker02/portbind",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Scan source trees for bind-all host and environment-port configuration.",
+  "bin": { "portbind": "src/cli.js" },
   "main": "./src/index.js",
-  "scripts": {
-    "test": "node --test"
-  },
+  "scripts": { "test": "node --test" },
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/theworker02/portbind.git"
-  },
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "https://github.com/theworker02/portbind.git" },
   "homepage": "https://theworker02.github.io/portbind/",
-  "bugs": {
-    "url": "https://github.com/theworker02/portbind/issues"
-  },
-  "files": [
-    "src",
-    "docs",
-    "LICENSE",
-    "README.md"
-  ],
-  "keywords": [
-    "port",
-    "bind",
-    "render",
-    "0.0.0.0",
-    "cli"
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  "bugs": { "url": "https://github.com/theworker02/portbind/issues" },
+  "files": ["src", "docs", "LICENSE", "README.md"],
+  "keywords": ["port", "bind", "render", "0.0.0.0", "deployment", "jsr"]
 }
