@@ -16,7 +16,7 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 ![version 1.1.0](https://img.shields.io/badge/version-1.1.0-C9A227?labelColor=0B1F33)
 ![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
 
-**Package:** [`@theworker02/portbind`](https://jsr.io/@theworker02/portbind) Â· **Site:** [GitHub Pages](https://theworker02.github.io/portbind/) Â· **Source:** [`theworker02/portbind`](https://github.com/theworker02/portbind)
+**Package:** [`@theworker02/portbind`](https://jsr.io/@theworker02/portbind) Ã‚Â· **Site:** [GitHub Pages](https://theworker02.github.io/portbind/) Ã‚Â· **Source:** [`theworker02/portbind`](https://github.com/theworker02/portbind)
 
 ## Add from JSR
 
@@ -34,14 +34,14 @@ console.log(DEFAULT_PATTERNS);
 
 ## Public API
 
-- `scanText(text)` â€” inspect one text value.
-- `scanPaths(targets, options)` â€” scan files, directories, and globs.
-- `collectFiles(targets)` â€” expand scan targets.
-- `walk(path)` â€” recursively enumerate files.
-- `matchGlob(path, pattern)` â€” compact glob matching.
-- `formatHuman(result)` â€” terminal-friendly output.
-- `DEFAULT_PATTERNS`, `SKIP_DIRS`, `PACKAGE` â€” documented configuration metadata.
-- `ScanTextResult`, `FileMatch`, `ScanOptions`, `ScanResult` â€” TypeScript interfaces.
+- `scanText(text)` Ã¢â‚¬â€ inspect one text value.
+- `scanPaths(targets, options)` Ã¢â‚¬â€ scan files, directories, and globs.
+- `collectFiles(targets)` Ã¢â‚¬â€ expand scan targets.
+- `walk(path)` Ã¢â‚¬â€ recursively enumerate files.
+- `matchGlob(path, pattern)` Ã¢â‚¬â€ compact glob matching.
+- `formatHuman(result)` Ã¢â‚¬â€ terminal-friendly output.
+- `DEFAULT_PATTERNS`, `SKIP_DIRS`, `PACKAGE` Ã¢â‚¬â€ documented configuration metadata.
+- `ScanTextResult`, `FileMatch`, `ScanOptions`, `ScanResult` Ã¢â‚¬â€ TypeScript interfaces.
 
 ## CLI from source
 
@@ -63,4 +63,8 @@ The canonical public package is JSR `@theworker02/portbind`, published using Git
 
 ## License
 
-[MIT](LICENSE) Â© 2026 theworker02
+[MIT](LICENSE) Ã‚Â© 2026 theworker02
+
+## Status
+
+portbind is actively packaged for commercial licensing and acquisition diligence. See [ACQUISITION.md](./ACQUISITION.md) and [docs/acquisition/](./docs/acquisition/).
